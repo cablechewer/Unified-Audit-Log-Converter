@@ -31,6 +31,8 @@
 # Algorithm Without -thorough switch.
 #  Loads source file into RAM
 #  Lists all unique operations in the UAL.  Converts the first occurrence of each operation to a list of fields.
+# If that conversion fails it cycles through other copies of the same operation.  As soon as one copy of the operation works
+# or it runs out of instances of the operation it moves on to the next one.
 #  Sorts the list and discards duplicate names.  Looks for fields that cannot be stored in a simple string
 # such as system.object fields.
 #  Once all field names are located script loads AuditConvertTemplate.ps1 and inserts lines for dealing with each field name.
@@ -48,8 +50,6 @@
 # into the field.  It does not try to assess the properties inside the system.object and break them out into separate
 # columns in the file CSV file.
 #
-#  If Thorough mode is NOT used, and If the first row of a particular operation type cannot be converted from JSON the script
-# does not seek out other rows of the same operation.
 #  Without Thorough mode It is assumed all operations of the same name will have the same field list.
 #
 #  Written by:  Chris Pollitt
